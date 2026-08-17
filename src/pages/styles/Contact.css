@@ -11,34 +11,104 @@
 .contact-info {
   display: flex;
   flex-direction: column;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 34px;
+  position: relative;
+  overflow: hidden;
 }
 
-.contact-info-title {
-  font-size: 1.65rem;
-  margin-bottom: 14px;
+.contact-info::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  left: -80px;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, var(--bg-glow) 0%, transparent 70%);
+  opacity: 0.5;
+  pointer-events: none;
 }
 
-.contact-info-text {
-  color: var(--text-muted);
+/* ----- Perfil ----- */
+.contact-profile {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 24px;
   margin-bottom: 26px;
+  border-bottom: 1px dashed var(--border);
+}
+
+.contact-avatar {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: var(--gradient);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 1.35rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 8px 22px rgba(2, 132, 199, 0.35);
+}
+
+.contact-profile-meta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.contact-profile-name {
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.contact-profile-role {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
 }
 
 .contact-status {
   display: inline-flex;
   align-items: center;
-  align-self: flex-start;
-  gap: 10px;
+  gap: 8px;
+  margin-left: auto;
   background: var(--accent-soft);
   border: 1px solid var(--accent-border);
   color: var(--accent);
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: 0.76rem;
   font-weight: 500;
-  padding: 9px 16px;
+  padding: 7px 13px;
   border-radius: 999px;
-  margin-bottom: 28px;
+  white-space: nowrap;
 }
 
+.contact-info-title {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.contact-info-text {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 26px;
+}
+
+/* ----- Lista de contacto ----- */
 .contact-list {
   display: flex;
   flex-direction: column;
@@ -94,6 +164,17 @@ a.contact-list-item:hover {
   overflow-wrap: break-word;
 }
 
+/* ----- Social ----- */
+.contact-social-title {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
 .contact-social {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -102,12 +183,13 @@ a.contact-list-item:hover {
 
 .social-card {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   gap: 12px;
-  padding: 18px;
+  padding: 14px 16px;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 14px;
+  min-width: 0;
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -118,27 +200,34 @@ a.contact-list-item:hover {
 }
 
 .social-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--gradient);
-  color: #fff;
+  background: var(--gradient-soft);
+  color: var(--accent);
   flex-shrink: 0;
+}
+
+.social-meta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 
 .social-name {
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
 }
 
 .social-handle {
   color: var(--text-muted);
   font-family: var(--font-mono);
-  font-size: 0.76rem;
-  overflow-wrap: break-word;
+  font-size: 0.72rem;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 /* ---------- Formulario ---------- */
@@ -203,6 +292,25 @@ a.contact-list-item:hover {
   color: var(--text);
 }
 
+.field-wrap {
+  position: relative;
+  display: block;
+}
+
+.field-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+  transition: color 0.25s ease;
+}
+
+.field-wrap:focus-within .field-icon {
+  color: var(--accent);
+}
+
 .form-field input,
 .form-field textarea {
   width: 100%;
@@ -217,6 +325,10 @@ a.contact-list-item:hover {
   resize: vertical;
 }
 
+.form-field .field-wrap input {
+  padding-left: 46px;
+}
+
 .contact-form .form-field:last-of-type {
   flex: 1;
   display: flex;
@@ -226,6 +338,10 @@ a.contact-list-item:hover {
 .contact-form .form-field:last-of-type textarea {
   flex: 1;
   min-height: 180px;
+}
+
+.form-field:focus-within label {
+  color: var(--accent);
 }
 
 .form-field input:focus,
@@ -238,6 +354,11 @@ a.contact-list-item:hover {
 .form-field input::placeholder,
 .form-field textarea::placeholder {
   color: var(--placeholder);
+  opacity: 1;
+}
+
+.form-field .field-wrap input::placeholder {
+  color: var(--text-muted);
 }
 
 .form-error {
@@ -260,6 +381,27 @@ a.contact-list-item:hover {
 .form-submit:disabled {
   opacity: 0.75;
   cursor: not-allowed;
+}
+
+.form-whatsapp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  margin-top: 18px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  transition: color 0.25s ease;
+}
+
+.form-whatsapp strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.form-whatsapp:hover {
+  color: var(--text);
 }
 
 .spinner {
@@ -312,14 +454,33 @@ a.contact-list-item:hover {
 }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 900px) {
+@media (max-width: 1020px) {
   .contact-grid {
     grid-template-columns: 1fr;
     gap: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .contact-profile {
+    flex-wrap: wrap;
+  }
+
+  .contact-status {
+    margin-left: 0;
+  }
+
+  .contact-social {
+    grid-template-columns: 1fr;
   }
 
   .form-row {
     grid-template-columns: 1fr;
     gap: 0;
+  }
+
+  .contact-info,
+  .contact-form-wrap {
+    padding: 26px 22px;
   }
 }

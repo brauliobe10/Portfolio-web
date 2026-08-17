@@ -20,7 +20,7 @@ export const profile = {
 
 export const stats = [
   { value: '+5', label: 'Proyectos desarrollados' },
-  { value: '+6', label: 'Tecnologías dominadas' },
+  { value: '+10', label: 'Tecnologías dominadas' },
   { value: '3+', label: 'Años de estudio y práctica' },
   { value: '100%', label: 'Dedicación y pasión' },
 ];
@@ -158,7 +158,7 @@ export const technologies = [
 ];
 
 export const contact = {
-  email: 'braulio.bellodas@example.com',
+  email: 'brauliobedeveloper@gmail.com',
   phone: '+51 922 306 476',
   social: [
     {

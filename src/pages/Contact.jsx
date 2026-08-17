@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import ScrollReveal from '../components/ScrollReveal';
-import { contact } from '../data/portfolio';
+import { profile, contact } from '../data/portfolio';
 import './styles/Contact.css';
 
 function SocialIcon({ name }) {
@@ -52,6 +52,20 @@ function InfoIcon({ type }) {
   );
 }
 
+function FieldIcon({ type }) {
+  const paths = {
+    user: <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" />,
+    mail: <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z" />,
+    tag: <path d="M20.6 13.4 12 22l-9-9V4h9l8.6 8.6a1 1 0 0 1 0 1.4ZM7.5 6.5h.01" />,
+  };
+
+  return (
+    <svg className="field-icon" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      {paths[type]}
+    </svg>
+  );
+}
+
 const contactInfo = [
   { label: 'Correo', value: contact.email, href: `mailto:${contact.email}`, icon: 'mail' },
   { label: 'Teléfono / WhatsApp', value: contact.phone, href: `https://wa.me/${contact.phone.replace(/[^0-9]/g, '')}`, icon: 'phone' },
@@ -95,6 +109,14 @@ export default function Contact() {
     }
   };
 
+  const initials = profile.name
+    .split(' ')
+    .slice(0, 2)
+    .map((n) => n[0])
+    .join('');
+
+  const whatsapp = contact.social.find((s) => s.icon === 'whatsapp');
+
   return (
     <section className="page-hero">
       <div className="container">
@@ -111,16 +133,23 @@ export default function Contact() {
 
         <div className="contact-grid">
           <ScrollReveal className="contact-info">
+            <div className="contact-profile">
+              <span className="contact-avatar">{initials}</span>
+              <span className="contact-profile-meta">
+                <span className="contact-profile-name">{profile.name}</span>
+                <span className="contact-profile-role">{profile.subtitle}</span>
+              </span>
+              <span className="contact-status">
+                <span className="pulse-dot" />
+                {contact.available ? 'Disponible' : 'Ocupado'}
+              </span>
+            </div>
+
             <h2 className="contact-info-title">Información de contacto</h2>
             <p className="contact-info-text">
               Estoy abierto a nuevas oportunidades, proyectos freelance y colaboraciones. Cuéntame
               tu idea y construyamos algo juntos.
             </p>
-
-            <div className="contact-status">
-              <span className="pulse-dot" />
-              {contact.available ? 'Disponible para proyectos' : 'Ocupado en este momento'}
-            </div>
 
             <div className="contact-list">
               {contactInfo.map((item) => {
@@ -147,6 +176,7 @@ export default function Contact() {
               })}
             </div>
 
+            <h3 className="contact-social-title">Sígueme</h3>
             <div className="contact-social">
               {contact.social.map((item) => (
                 <a
@@ -189,41 +219,50 @@ export default function Contact() {
                 <div className="form-row">
                   <div className="form-field">
                     <label htmlFor="name">Nombre</label>
-                    <input
-                      id="name"
-                      name="name"
-                      type="text"
-                      placeholder="Tu nombre"
-                      value={form.name}
-                      onChange={handleChange}
-                      required
-                    />
+                    <span className="field-wrap">
+                      <FieldIcon type="user" />
+                      <input
+                        id="name"
+                        name="name"
+                        type="text"
+                        placeholder="Tu nombre"
+                        value={form.name}
+                        onChange={handleChange}
+                        required
+                      />
+                    </span>
                   </div>
                   <div className="form-field">
                     <label htmlFor="email">Correo</label>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      placeholder="tu@correo.com"
-                      value={form.email}
-                      onChange={handleChange}
-                      required
-                    />
+                    <span className="field-wrap">
+                      <FieldIcon type="mail" />
+                      <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        placeholder="tu@correo.com"
+                        value={form.email}
+                        onChange={handleChange}
+                        required
+                      />
+                    </span>
                   </div>
                 </div>
 
                 <div className="form-field">
                   <label htmlFor="subject">Asunto</label>
-                  <input
-                    id="subject"
-                    name="subject"
-                    type="text"
-                    placeholder="¿Sobre qué me quieres contactar?"
-                    value={form.subject}
-                    onChange={handleChange}
-                    required
-                  />
+                  <span className="field-wrap">
+                    <FieldIcon type="tag" />
+                    <input
+                      id="subject"
+                      name="subject"
+                      type="text"
+                      placeholder="¿Sobre qué me quieres contactar?"
+                      value={form.subject}
+                      onChange={handleChange}
+                      required
+                    />
+                  </span>
                 </div>
 
                 <div className="form-field">
@@ -241,7 +280,8 @@ export default function Contact() {
 
                 {status === 'error' && (
                   <p className="form-error" role="alert">
-                    No se pudo enviar el mensaje. Inténtalo de nuevo o escríbeme por correo o WhatsApp.
+                    No se pudo enviar el mensaje. Inténtalo de nuevo o escríbeme por correo o
+                    WhatsApp.
                   </p>
                 )}
 
@@ -255,6 +295,13 @@ export default function Contact() {
                     'Enviar mensaje'
                   )}
                 </button>
+
+                {whatsapp && (
+                  <a href={whatsapp.url} target="_blank" rel="noreferrer" className="form-whatsapp">
+                    <span>Prefieres respuestas rápidas?</span>
+                    <strong>Escríbeme por WhatsApp</strong>
+                  </a>
+                )}
               </form>
             )}
           </ScrollReveal>
