@@ -51,41 +51,43 @@ export default function Navbar() {
           <span>/&gt;</span>
         </Link>
 
-        <div className="nav-actions">
-          <button
-            className="theme-toggle"
-            onClick={toggleTheme}
-            aria-label={theme === 'dark' ? 'Activar modo claro' : 'Activar modo oscuro'}
-            title={theme === 'dark' ? 'Modo claro' : 'Modo oscuro'}
-          >
-            <ThemeIcon theme={theme} />
-          </button>
+        <div className="navbar-right">
+          <nav className={`nav-links ${open ? 'open' : ''}`}>
+            {links.map((link) => (
+              <NavLink
+                key={link.to}
+                to={link.to}
+                end={link.to === '/'}
+                className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                onClick={() => setOpen(false)}
+              >
+                {link.label}
+              </NavLink>
+            ))}
+          </nav>
 
-          <button
-            className={`nav-toggle ${open ? 'open' : ''}`}
-            onClick={() => setOpen((v) => !v)}
-            aria-label="Menú de navegación"
-            aria-expanded={open}
-          >
-            <span />
-            <span />
-            <span />
-          </button>
-        </div>
-
-        <nav className={`nav-links ${open ? 'open' : ''}`}>
-          {links.map((link) => (
-            <NavLink
-              key={link.to}
-              to={link.to}
-              end={link.to === '/'}
-              className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-              onClick={() => setOpen(false)}
+          <div className="nav-actions">
+            <button
+              className="theme-toggle"
+              onClick={toggleTheme}
+              aria-label={theme === 'dark' ? 'Activar modo claro' : 'Activar modo oscuro'}
+              title={theme === 'dark' ? 'Modo claro' : 'Modo oscuro'}
             >
-              {link.label}
-            </NavLink>
-          ))}
-        </nav>
+              <ThemeIcon theme={theme} />
+            </button>
+
+            <button
+              className={`nav-toggle ${open ? 'open' : ''}`}
+              onClick={() => setOpen((v) => !v)}
+              aria-label="Menú de navegación"
+              aria-expanded={open}
+            >
+              <span />
+              <span />
+              <span />
+            </button>
+          </div>
+        </div>
       </div>
     </header>
   );

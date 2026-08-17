@@ -34,12 +34,65 @@ function SocialIcon({ name }) {
   );
 }
 
-export default function Contact() {
-  const [sent, setSent] = useState(false);
+function InfoIcon({ type }) {
+  const paths = {
+    mail: <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z" />,
+    phone: (
+      <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.36 11.36 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.57 1 1 0 0 1-.25 1.02Z" />
+    ),
+    pin: (
+      <path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z" />
+    ),
+  };
 
-  const handleSubmit = (e) => {
+  return (
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      {paths[type]}
+    </svg>
+  );
+}
+
+const contactInfo = [
+  { label: 'Correo', value: contact.email, href: `mailto:${contact.email}`, icon: 'mail' },
+  { label: 'Teléfono / WhatsApp', value: contact.phone, href: `https://wa.me/${contact.phone.replace(/[^0-9]/g, '')}`, icon: 'phone' },
+  { label: 'Ubicación', value: contact.location, href: null, icon: 'pin' },
+];
+
+const emptyForm = { name: '', email: '', subject: '', message: '' };
+
+export default function Contact() {
+  const [form, setForm] = useState(emptyForm);
+  const [status, setStatus] = useState('idle'); // idle | sending | sent | error
+
+  const handleChange = (e) => {
+    setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSent(true);
+    setStatus('sending');
+
+    try {
+      const res = await fetch(contact.formEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          ...form,
+          _subject: `[Portafolio] Nuevo mensaje de ${form.name}`,
+          _template: 'table',
+          _captcha: 'false',
+        }),
+      });
+
+      if (res.ok) {
+        setForm(emptyForm);
+        setStatus('sent');
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
   };
 
   return (
@@ -60,12 +113,38 @@ export default function Contact() {
           <ScrollReveal className="contact-info">
             <h2 className="contact-info-title">Información de contacto</h2>
             <p className="contact-info-text">
-              Estoy abierto a nuevas oportunidades, proyectos freelance y colaboraciones.
+              Estoy abierto a nuevas oportunidades, proyectos freelance y colaboraciones. Cuéntame
+              tu idea y construyamos algo juntos.
             </p>
 
             <div className="contact-status">
               <span className="pulse-dot" />
               {contact.available ? 'Disponible para proyectos' : 'Ocupado en este momento'}
+            </div>
+
+            <div className="contact-list">
+              {contactInfo.map((item) => {
+                const content = (
+                  <>
+                    <span className="contact-list-icon">
+                      <InfoIcon type={item.icon} />
+                    </span>
+                    <span className="contact-list-meta">
+                      <span className="contact-list-label">{item.label}</span>
+                      <span className="contact-list-value">{item.value}</span>
+                    </span>
+                  </>
+                );
+                return item.href ? (
+                  <a key={item.label} href={item.href} target="_blank" rel="noreferrer" className="contact-list-item">
+                    {content}
+                  </a>
+                ) : (
+                  <div key={item.label} className="contact-list-item">
+                    {content}
+                  </div>
+                );
+              })}
             </div>
 
             <div className="contact-social">
@@ -76,6 +155,7 @@ export default function Contact() {
                   target="_blank"
                   rel="noreferrer"
                   className="social-card"
+                  aria-label={item.name}
                 >
                   <span className="social-icon">
                     <SocialIcon name={item.icon} />
@@ -90,45 +170,90 @@ export default function Contact() {
           </ScrollReveal>
 
           <ScrollReveal delay={1} className="contact-form-wrap">
-            {sent ? (
+            {status === 'sent' ? (
               <div className="contact-success">
                 <span className="success-icon">✓</span>
                 <h3>¡Mensaje enviado!</h3>
                 <p>Gracias por escribirme, te responderé muy pronto.</p>
-                <button className="btn btn-ghost" onClick={() => setSent(false)}>
+                <button className="btn btn-ghost" onClick={() => setStatus('idle')}>
                   Enviar otro mensaje
                 </button>
               </div>
             ) : (
               <form className="contact-form" onSubmit={handleSubmit}>
+                <div className="form-head">
+                  <h3 className="form-title">Envíame un mensaje</h3>
+                  <p className="form-note">Respondo en menos de 24 horas.</p>
+                </div>
+
                 <div className="form-row">
                   <div className="form-field">
                     <label htmlFor="name">Nombre</label>
-                    <input id="name" type="text" placeholder="Tu nombre" required />
+                    <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      placeholder="Tu nombre"
+                      value={form.name}
+                      onChange={handleChange}
+                      required
+                    />
                   </div>
                   <div className="form-field">
                     <label htmlFor="email">Correo</label>
-                    <input id="email" type="email" placeholder="tu@correo.com" required />
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      placeholder="tu@correo.com"
+                      value={form.email}
+                      onChange={handleChange}
+                      required
+                    />
                   </div>
                 </div>
 
                 <div className="form-field">
                   <label htmlFor="subject">Asunto</label>
-                  <input id="subject" type="text" placeholder="¿Sobre qué me quieres contactar?" required />
+                  <input
+                    id="subject"
+                    name="subject"
+                    type="text"
+                    placeholder="¿Sobre qué me quieres contactar?"
+                    value={form.subject}
+                    onChange={handleChange}
+                    required
+                  />
                 </div>
 
                 <div className="form-field">
                   <label htmlFor="message">Mensaje</label>
                   <textarea
                     id="message"
+                    name="message"
                     rows="6"
                     placeholder="Cuéntame sobre tu proyecto..."
+                    value={form.message}
+                    onChange={handleChange}
                     required
                   />
                 </div>
 
-                <button type="submit" className="btn btn-primary form-submit">
-                  Enviar mensaje
+                {status === 'error' && (
+                  <p className="form-error" role="alert">
+                    No se pudo enviar el mensaje. Inténtalo de nuevo o escríbeme por correo o WhatsApp.
+                  </p>
+                )}
+
+                <button type="submit" className="btn btn-primary form-submit" disabled={status === 'sending'}>
+                  {status === 'sending' ? (
+                    <>
+                      <span className="spinner" aria-hidden="true" />
+                      Enviando...
+                    </>
+                  ) : (
+                    'Enviar mensaje'
+                  )}
                 </button>
               </form>
             )}

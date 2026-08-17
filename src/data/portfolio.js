@@ -10,7 +10,7 @@ export const profile = {
   role: 'Estudiante de Ingeniería de Sistemas',
   subtitle: 'Desarrollador Web',
   tagline:
-    'Creo aplicaciones y sitios web modernos, rápidos y responsivos. En constante aprendizaje para transformar ideas en soluciones digitales.',
+    'Construyo aplicaciones y sitios web de alto rendimiento, escalables y optimizados para la mejor experiencia de usuario. Transformo ideas complejas en soluciones digitales funcionales y modernas.',
   about: [
     '¡Hola! Soy Braulio, estudiante de Ingeniería de Sistemas apasionado por el desarrollo web. Me especializo en construir experiencias digitales modernas y funcionales, desde la maquetación frontend hasta la lógica del backend.',
     'Disfruto aprendiendo nuevas tecnologías cada día y aplicándolas en proyectos reales. Mi objetivo es convertir líneas de código en productos que faciliten la vida de las personas y aporten valor real.',
@@ -19,8 +19,8 @@ export const profile = {
 };
 
 export const stats = [
-  { value: '+15', label: 'Proyectos desarrollados' },
-  { value: '+10', label: 'Tecnologías dominadas' },
+  { value: '+5', label: 'Proyectos desarrollados' },
+  { value: '+6', label: 'Tecnologías dominadas' },
   { value: '3+', label: 'Años de estudio y práctica' },
   { value: '100%', label: 'Dedicación y pasión' },
 ];
@@ -28,69 +28,60 @@ export const stats = [
 export const projects = [
   {
     id: 1,
-    title: 'Sistema de Gestión de Inventario',
+    title: 'Sistema de gestion POS para Dulce Cafe',
     description:
-      'Aplicación web para controlar stock, entradas y salidas de productos con reportes en tiempo real.',
-    technologies: ['React', 'Node.js', 'Express', 'MongoDB'],
-    image: 'inventario',
-    url: '#',
-    github: '#',
-    year: '2025',
+      'Aplicación web para controlar stock, ventas, entradas y salidas de productos con reportes en tiempo real.',
+    technologies: ['PHP', 'Tailwind', 'Boostrap', 'PostgreSQL', 'Supabase'],
+    image: '/images/projects/dulcecafe.jpg',
+    url: 'https://dulce-cafepro.onrender.com/',
+    github: 'https://github.com/brauliobe10/dulce_cafepro',
+    year: '2026',
+    featured: true,
   },
   {
     id: 2,
-    title: 'E-Commerce Moderno',
+    title: 'E-Commerce para tienda de motos',
     description:
-      'Tienda online con carrito de compras, pasarela de pagos y panel de administración de productos.',
-    technologies: ['React', 'Redux', 'Node.js', 'Stripe', 'MongoDB'],
-    image: 'ecommerce',
+      'Tienda online con carrito de compras, pasarela de pagos y panel de administración de productos, usuarios, roles.',
+technologies: ['PHP', 'Laravel', 'Livewire', 'Boostrap', 'PostgreSQL'],
+    image: '/images/projects/motos-proyecto.jpg',
     url: '#',
-    github: '#',
+    github: 'https://github.com/brauliobe10/project',
     year: '2024',
+    featured: true,
   },
   {
     id: 3,
-    title: 'TaskFlow - Gestor de Tareas',
+    title: 'Landing page para Sabia Madre Tierra',
     description:
-      'Aplicación de productividad con autenticación, listas colaborativas y sincronización en la nube.',
-    technologies: ['React', 'Firebase', 'CSS'],
-    image: 'taskflow',
-    url: '#',
-    github: '#',
-    year: '2024',
+      'Sitio web para mostrar proyectos realizados por grupo universitario.',
+    technologies: ['HTML', 'CSS', 'Javascript' , 'Tailwind'],
+    image: '/images/projects/sabia-madre.jpg',
+    url: 'https://sabia-madre-tierra.vercel.app/',
+    github: 'https://github.com/brauliobe10/Sabia-Madre-Tierra',
+    year: '2026',
   },
   {
     id: 4,
-    title: 'Sistema de Reservas para Restaurante',
+    title: 'Landing page para Rutas del Norte',
     description:
-      'Sitio con reservas online, gestión de mesas y notificaciones por correo para el establecimiento.',
-    technologies: ['React', 'Node.js', 'PostgreSQL'],
-    image: 'reservas',
-    url: '#',
-    github: '#',
-    year: '2023',
+      'Sitio web para mostrar proyectos realizados por Programa Rutas del Norte.',
+    technologies: ['HTML', 'CSS', 'Javascript' , 'Tailwind'],
+    image: '/images/projects/rutas.jpg',
+    url: 'https://rutasdelnorte.vercel.app/index.html',
+    github: 'https://github.com/brauliobe10/web-tv',
+    year: '2026',
   },
   {
     id: 5,
-    title: 'Landing Page Clínica Dental',
+    title: 'Aplicacion con consumo de api del clima',
     description:
-      'Página institucional con agendamiento de citas, galería de servicios y diseño totalmente responsivo.',
+      'Landing page de consulta de clima segun Paises o Ciudades.',
     technologies: ['HTML', 'CSS', 'JavaScript'],
-    image: 'clinica',
-    url: '#',
-    github: '#',
-    year: '2023',
-  },
-  {
-    id: 6,
-    title: 'Dashboard de Ventas con API',
-    description:
-      'Panel de analytics que consume una API REST y visualiza métricas de ventas con gráficos interactivos.',
-    technologies: ['React', 'Chart.js', 'REST API'],
-    image: 'dashboard',
-    url: '#',
-    github: '#',
-    year: '2024',
+    image: '/images/projects/clima.jpg',
+    url: 'https://aplicacion-clima-theta.vercel.app/',
+    github: 'https://github.com/brauliobe10/Aplicacion-Clima',
+    year: '2026',
   },
 ];
 
@@ -100,27 +91,19 @@ export const experience = [
     role: 'Desarrollador Web Freelance',
     company: 'Independiente',
     description:
-      'Desarrollo de sitios web y aplicaciones para clientes particulares, trabajando con React, Node.js y bases de datos.',
-    skills: ['React', 'Node.js', 'MongoDB', 'Diseño Web'],
+      'Desarrollo de sitios web y aplicaciones para clientes particulares, trabajando con React, Laravel, y bases de datos.',
+    skills: ['React', 'Laravel', 'Livewire', 'Boostrap', 'Tailwind', 'Filament', 'Diseño Web', 'Git' , 'Github'],
   },
   {
     period: '2024 - 2025',
-    role: 'Practicante de Desarrollo Web',
-    company: 'Startup de Tecnología',
+    role: 'Soporte Tecnico',
+    company: 'Dignita Tech - WorldCoin',
     description:
-      'Apoyo en el desarrollo y mantenimiento de aplicaciones web, corrección de errores y mejora de la experiencia de usuario.',
-    skills: ['JavaScript', 'CSS', 'Git', 'Metodologías Ágiles'],
+      'Apoyo en el mantenimiento de la aplicacion, generacion de ticketsde soporte,  corrección de errores y mejora de la experiencia de usuario',
+    skills: ['Kotlin', 'CSS', 'Git', 'Metodologías Ágiles'],
   },
   {
-    period: '2023 - 2024',
-    role: 'Soporte Técnico y Desarrollo Web',
-    company: 'Universidad / Proyecto Académico',
-    description:
-      'Participación en proyectos universitarios: sistemas de información para la gestión académica y mantenimiento de sitios institucionales.',
-    skills: ['HTML', 'CSS', 'MySQL', 'PHP'],
-  },
-  {
-    period: '2022 - 2023',
+    period: '2022 - Actualidad',
     role: 'Proyectos Personales y Formación',
     company: 'Autodidacta',
     description:
@@ -136,29 +119,31 @@ export const technologies = [
       { name: 'HTML5', level: 90, color: '#e34f26' },
       { name: 'CSS3', level: 85, color: '#1572b6' },
       { name: 'JavaScript', level: 85, color: '#f7df1e' },
-      { name: 'React', level: 80, color: '#61dafb' },
-      { name: 'Redux', level: 70, color: '#764abc' },
+      { name: 'React', level: 75, color: '#61dafb' },
+      { name: 'Boostrap', level: 70, color: '#764abc' },
       { name: 'Tailwind CSS', level: 75, color: '#38bdf8' },
-      { name: 'Bootstrap', level: 80, color: '#7952b3' },
+      { name: 'Bootstrap', level: 90, color: '#7952b3' },
     ],
   },
   {
     category: 'Backend',
     items: [
-      { name: 'Node.js', level: 75, color: '#68a063' },
-      { name: 'Express', level: 75, color: '#3f3f46' },
-      { name: 'Python', level: 65, color: '#3776ab' },
-      { name: 'Django', level: 55, color: '#092e20' },
+      { name: 'Laravel', level: 90, color: '#68a063' },
+      { name: 'PHP', level: 80, color: '#3f3f46' },
+      { name: 'Java', level: 65, color: '#3776ab' },
+      { name: 'C++', level: 55, color: '#092e20' },
+      { name: 'Python', level: 75, color: '#61dafb' },
+      { name: 'C#', level: 55, color: '#092e20' },
       { name: 'REST APIs', level: 80, color: '#b3122a' },
     ],
   },
   {
     category: 'Bases de Datos',
     items: [
-      { name: 'MongoDB', level: 75, color: '#47a248' },
+      { name: 'SqlServer', level: 75, color: '#47a248' },
       { name: 'MySQL', level: 80, color: '#4479a1' },
       { name: 'PostgreSQL', level: 65, color: '#336791' },
-      { name: 'Firebase', level: 70, color: '#ffca28' },
+      { name: 'SQLite', level: 70, color: '#ffca28' },
     ],
   },
   {
@@ -166,21 +151,20 @@ export const technologies = [
     items: [
       { name: 'Git / GitHub', level: 85, color: '#f05033' },
       { name: 'Vite', level: 80, color: '#646cff' },
-      { name: 'Docker', level: 55, color: '#2496ed' },
       { name: 'Figma', level: 70, color: '#a259ff' },
-      { name: 'Linux', level: 65, color: '#fcc624' },
+      { name: 'Postman', level: 75, color: '#fcc624' },
     ],
   },
 ];
 
 export const contact = {
   email: 'braulio.bellodas@example.com',
-  phone: '+51 999 999 999',
+  phone: '+51 922 306 476',
   social: [
     {
       name: 'GitHub',
-      handle: '@braulio-bellodas',
-      url: 'https://github.com/',
+      handle: '@brauliobe10',
+      url: 'https://github.com/brauliobe10',
       icon: 'github',
     },
     {
@@ -191,16 +175,18 @@ export const contact = {
     },
     {
       name: 'WhatsApp',
-      handle: '+51 999 999 999',
-      url: 'https://wa.me/51999999999',
+      handle: '+51 922 306 476',
+      url: 'https://wa.me/51922306476',
       icon: 'whatsapp',
     },
     {
       name: 'Correo',
-      handle: 'braulio.bellodas@example.com',
-      url: 'mailto:braulio.bellodas@example.com',
+      handle: 'brauliobedeveloper@gmail.com',
+      url: 'mailto:brauliobedeveloper@gmail.com',
       icon: 'mail',
     },
   ],
   available: true,
+  location: 'Perú',
+  formEndpoint: 'https://formsubmit.co/brauliobedeveloper@gmail.com',
 };

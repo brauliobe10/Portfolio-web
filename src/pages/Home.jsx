@@ -52,9 +52,9 @@ export default function Home() {
                 <code>{`const desarrollador = {
   nombre: '${profile.firstName}',
   carrera: 'Ing. de Sistemas',
-  stack: ['React', 'Node.js', 'CSS'],
+  stack: ['Laravel', 'PHP', 'Livewire', 'React'],
   objetivo: 'Crear soluciones
-             que impacten ✨',
+             que impacten ',
   siempreAprendiendo: true,
 };
 
@@ -105,7 +105,7 @@ console.log(desarrollador);`}</code>
               </p>
             ))}
             <div className="about-tags">
-              {['React', 'Node.js', 'JavaScript', 'Diseño Responsivo', 'Ingeniería de Sistemas'].map(
+              {['PHP', 'Laravel', 'JavaScript', 'Python', 'Bases de Datos', 'C++', 'HTML', 'Redes', 'Diseño Responsivo', 'API REST', ].map(
                 (tag) => (
                   <span key={tag} className="tag">
                     {tag}

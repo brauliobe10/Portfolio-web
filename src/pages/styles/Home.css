@@ -104,7 +104,8 @@
 
 /* ---------- Stats ---------- */
 .stats-section {
-  background: var(--bg-alt);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 .stats-grid {
