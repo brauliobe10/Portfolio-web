@@ -1,5 +1,6 @@
 .hero {
   min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
   padding: 120px 0 60px;
@@ -210,7 +211,7 @@
 
   .hero-inner {
     grid-template-columns: 1fr;
-    gap: 50px;
+    gap: 44px;
   }
 
   .hero-visual {
@@ -233,13 +234,39 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .stats-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .stat-card {
+    padding: 24px 16px;
+  }
+
+  .hero-badge {
+    font-size: 0.72rem;
+    padding: 7px 13px;
   }
 
   .hero-actions .btn {
     width: 100%;
     justify-content: center;
+  }
+
+  .hero-actions {
+    gap: 12px;
+  }
+
+  .code-card {
+    transform: rotate(0deg);
+  }
+
+  .code-card:hover {
+    transform: none;
+  }
+
+  .code-body {
+    padding: 18px 14px;
   }
 }

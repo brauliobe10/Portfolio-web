@@ -142,6 +142,7 @@ h4 {
 .page-hero {
   padding: 140px 0 80px;
   min-height: 100vh;
+  min-height: 100svh;
 }
 
 .page-kicker {
@@ -397,7 +398,7 @@ h4 {
 }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 900px) {
+@media (max-width: 960px) {
   .nav-toggle {
     display: flex;
   }
@@ -442,6 +443,34 @@ h4 {
 
   .section {
     padding: 65px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .brand {
+    font-size: 1.05rem;
+  }
+
+  .page-hero {
+    padding: 108px 0 48px;
+  }
+
+  .page-kicker {
+    letter-spacing: 2px;
+    font-size: 0.7rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 40px;
+  }
+
+  .btn {
+    padding: 13px 22px;
   }
 }
 

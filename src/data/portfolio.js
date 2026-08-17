@@ -47,7 +47,7 @@ technologies: ['PHP', 'Laravel', 'Livewire', 'Boostrap', 'PostgreSQL'],
     image: '/images/projects/motos-proyecto.jpg',
     url: '#',
     github: 'https://github.com/brauliobe10/project',
-    year: '2024',
+    year: '2026',
     featured: true,
   },
   {

@@ -484,3 +484,24 @@ a.contact-list-item:hover {
     padding: 26px 22px;
   }
 }
+
+@media (max-width: 420px) {
+  .contact-info,
+  .contact-form-wrap {
+    padding: 22px 16px;
+  }
+
+  .contact-form .form-field:last-of-type textarea {
+    min-height: 150px;
+  }
+
+  .form-field label {
+    font-size: 0.75rem;
+  }
+
+  .contact-avatar {
+    width: 50px;
+    height: 50px;
+    font-size: 1.15rem;
+  }
+}

@@ -154,3 +154,28 @@
     justify-content: flex-start;
   }
 }
+
+@media (max-width: 400px) {
+  .timeline-item,
+  .timeline-item:nth-child(odd),
+  .timeline-item:nth-child(even) {
+    padding: 0 0 26px 34px;
+  }
+
+  .timeline::before {
+    left: 8px;
+  }
+
+  .timeline-item:nth-child(odd) .timeline-dot,
+  .timeline-item:nth-child(even) .timeline-dot {
+    left: 0;
+  }
+
+  .timeline-card {
+    padding: 20px 18px;
+  }
+
+  .timeline-role {
+    font-size: 1.05rem;
+  }
+}

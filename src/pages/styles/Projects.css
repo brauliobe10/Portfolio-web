@@ -328,6 +328,12 @@
 }
 
 /* ---------- Responsive ---------- */
+@media (max-width: 1024px) {
+  .project-thumb {
+    height: 280px;
+  }
+}
+
 @media (max-width: 640px) {
   .projects-grid {
     grid-template-columns: 1fr;
@@ -335,7 +341,11 @@
   }
 
   .project-thumb {
-    height: 270px;
+    height: 240px;
+  }
+
+  .project-body {
+    padding: 26px 22px 24px;
   }
 
   .project-links {
@@ -345,5 +355,24 @@
   .project-link {
     flex: 1;
     justify-content: center;
+  }
+}
+
+/* Dispositivos táctiles: el overlay "Ver demo" debe verse sin hover */
+@media (hover: none), (pointer: coarse) {
+  .project-thumb-link:hover .project-view,
+  .project-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .project-view {
+    right: 14px;
+    left: 14px;
+    justify-content: center;
+  }
+
+  .project-card--featured {
+    animation: none;
   }
 }
