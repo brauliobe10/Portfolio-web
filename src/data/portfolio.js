@@ -8,7 +8,7 @@ export const profile = {
   name: 'Braulio Bellodas Estrella',
   firstName: 'Braulio',
   role: 'Estudiante de Ingeniería de Sistemas',
-  subtitle: 'Desarrollador Web',
+  subtitle: 'Desarrollador Web FullStack',
   tagline:
     'Construyo aplicaciones y sitios web de alto rendimiento, escalables y optimizados para la mejor experiencia de usuario. Transformo ideas complejas en soluciones digitales funcionales y modernas.',
   about: [
