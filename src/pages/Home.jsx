@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
-import ScrollReveal from '../components/ScrollReveal';
-import { profile, stats } from '../data/portfolio';
-import './styles/Home.css';
+import { Link } from "react-router-dom";
+import ScrollReveal from "../components/ScrollReveal";
+import { profile, stats } from "../data/portfolio";
+import "./styles/Home.css";
 
 export default function Home() {
   return (
@@ -93,7 +93,8 @@ console.log(desarrollador);`}</code>
             </p>
             <div className="about-quote">
               <p>
-                &ldquo;El código es la herramienta con la que transformo ideas en soluciones reales.&rdquo;
+                &ldquo;El código es la herramienta con la que transformo ideas
+                en soluciones reales.&rdquo;
               </p>
             </div>
           </ScrollReveal>
@@ -105,13 +106,22 @@ console.log(desarrollador);`}</code>
               </p>
             ))}
             <div className="about-tags">
-              {['PHP', 'Laravel', 'JavaScript', 'Python', 'Bases de Datos', 'C++', 'HTML', 'Redes', 'Diseño Responsivo', 'API REST', ].map(
-                (tag) => (
-                  <span key={tag} className="tag">
-                    {tag}
-                  </span>
-                ),
-              )}
+              {[
+                "PHP",
+                "Laravel",
+                "JavaScript",
+                "Python",
+                "C++",
+                "HTML",
+                "Redes",
+                "Diseño Responsivo",
+                "API REST",
+                "Bases de Datos",
+              ].map((tag) => (
+                <span key={tag} className="tag">
+                  {tag}
+                </span>
+              ))}
             </div>
             <Link to="/contacto" className="btn btn-primary">
               Trabajemos juntos
