@@ -4,8 +4,8 @@ export default function ScrollReveal({ children, delay = 0, className = '', as: 
   const ref = useRef(null);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return undefined;
+    const element = ref.current;
+    if (!element) return undefined;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -16,10 +16,10 @@ export default function ScrollReveal({ children, delay = 0, className = '', as: 
           }
         });
       },
-      { threshold: 0.12 },
+      { threshold: 0.10},
     );
 
-    observer.observe(el);
+    observer.observe(element);
     return () => observer.disconnect();
   }, []);
 

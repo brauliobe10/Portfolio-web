@@ -49,7 +49,7 @@ export default function Home() {
                 <span className="code-title">desarrollador.js</span>
               </div>
               <pre className="code-body">
-                <code>{`const desarrollador = {
+                <code>{`const desallador = {
   nombre: '${profile.firstName}',
   carrera: 'Ing. de Sistemas',
   stack: ['Laravel', 'PHP', 'Livewire', 'React'],
