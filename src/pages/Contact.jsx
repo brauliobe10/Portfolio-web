@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import ScrollReveal from '../components/ScrollReveal';
-import { profile, contact } from '../data/portfolio';
-import './styles/Contact.css';
+import { useState } from "react";
+import ScrollReveal from "../components/ScrollReveal";
+import { profile, contact } from "../data/portfolio";
+import "./styles/Contact.css";
 
 function SocialIcon({ name }) {
   const paths = {
@@ -28,7 +28,13 @@ function SocialIcon({ name }) {
   };
 
   return (
-    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+    <svg
+      viewBox="0 0 24 24"
+      width="20"
+      height="20"
+      fill="currentColor"
+      aria-hidden="true"
+    >
       {paths[name]}
     </svg>
   );
@@ -36,7 +42,9 @@ function SocialIcon({ name }) {
 
 function InfoIcon({ type }) {
   const paths = {
-    mail: <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z" />,
+    mail: (
+      <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z" />
+    ),
     phone: (
       <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.36 11.36 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.57 1 1 0 0 1-.25 1.02Z" />
     ),
@@ -46,7 +54,17 @@ function InfoIcon({ type }) {
   };
 
   return (
-    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg
+      viewBox="0 0 24 24"
+      width="18"
+      height="18"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
       {paths[type]}
     </svg>
   );
@@ -54,29 +72,56 @@ function InfoIcon({ type }) {
 
 function FieldIcon({ type }) {
   const paths = {
-    user: <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" />,
-    mail: <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z" />,
-    tag: <path d="M20.6 13.4 12 22l-9-9V4h9l8.6 8.6a1 1 0 0 1 0 1.4ZM7.5 6.5h.01" />,
+    user: (
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" />
+    ),
+    mail: (
+      <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z" />
+    ),
+    tag: (
+      <path d="M20.6 13.4 12 22l-9-9V4h9l8.6 8.6a1 1 0 0 1 0 1.4ZM7.5 6.5h.01" />
+    ),
   };
 
   return (
-    <svg className="field-icon" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg
+      className="field-icon"
+      viewBox="0 0 24 24"
+      width="17"
+      height="17"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
       {paths[type]}
     </svg>
   );
 }
 
 const contactInfo = [
-  { label: 'Correo', value: contact.email, href: `mailto:${contact.email}`, icon: 'mail' },
-  { label: 'Teléfono / WhatsApp', value: contact.phone, href: `https://wa.me/${contact.phone.replace(/[^0-9]/g, '')}`, icon: 'phone' },
-  { label: 'Ubicación', value: contact.location, href: null, icon: 'pin' },
+  {
+    label: "Correo",
+    value: contact.email,
+    href: `mailto:${contact.email}`,
+    icon: "mail",
+  },
+  {
+    label: "Teléfono / WhatsApp",
+    value: contact.phone,
+    href: `https://wa.me/${contact.phone.replace(/[^0-9]/g, "")}`,
+    icon: "phone",
+  },
+  { label: "Ubicación", value: contact.location, href: null, icon: "pin" },
 ];
 
-const emptyForm = { name: '', email: '', subject: '', message: '' };
+const emptyForm = { name: "", email: "", subject: "", message: "" };
 
 export default function Contact() {
   const [form, setForm] = useState(emptyForm);
-  const [status, setStatus] = useState('idle'); // idle | sending | sent | error
+  const [status, setStatus] = useState("idle"); // idle | sending | sent | error
 
   const handleChange = (e) => {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
@@ -84,38 +129,41 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus('sending');
+    setStatus("sending");
 
     try {
       const res = await fetch(contact.formEndpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
         body: JSON.stringify({
           ...form,
           _subject: `[Portafolio] Nuevo mensaje de ${form.name}`,
-          _template: 'table',
-          _captcha: 'false',
+          _template: "table",
+          _captcha: "false",
         }),
       });
 
       if (res.ok) {
         setForm(emptyForm);
-        setStatus('sent');
+        setStatus("sent");
       } else {
-        setStatus('error');
+        setStatus("error");
       }
     } catch {
-      setStatus('error');
+      setStatus("error");
     }
   };
 
   const initials = profile.name
-    .split(' ')
+    .split(" ")
     .slice(0, 2)
     .map((n) => n[0])
-    .join('');
+    .join("");
 
-  const whatsapp = contact.social.find((s) => s.icon === 'whatsapp');
+  const whatsapp = contact.social.find((s) => s.icon === "whatsapp");
 
   return (
     <section className="page-hero">
@@ -126,8 +174,8 @@ export default function Contact() {
             Contáctame <span className="text-gradient">aquí</span>
           </h1>
           <p className="section-subtitle">
-            ¿Tienes un proyecto en mente o quieres trabajar juntos? Escríbeme, respondo lo antes
-            posible.
+            ¿Tienes un proyecto en mente o quieres trabajar juntos? Escríbeme,
+            respondo lo antes posible.
           </p>
         </ScrollReveal>
 
@@ -141,14 +189,14 @@ export default function Contact() {
               </span>
               <span className="contact-status">
                 <span className="pulse-dot" />
-                {contact.available ? 'Disponible' : 'Ocupado'}
+                {contact.available ? "Disponible" : "Ocupado"}
               </span>
             </div>
 
             <h2 className="contact-info-title">Información de contacto</h2>
             <p className="contact-info-text">
-              Estoy abierto a nuevas oportunidades, proyectos freelance y colaboraciones. Cuéntame
-              tu idea y construyamos algo juntos.
+              Estoy abierto a nuevas oportunidades, proyectos freelance y
+              colaboraciones. Cuéntame tu idea y construyamos algo juntos.
             </p>
 
             <div className="contact-list">
@@ -165,7 +213,13 @@ export default function Contact() {
                   </>
                 );
                 return item.href ? (
-                  <a key={item.label} href={item.href} target="_blank" rel="noreferrer" className="contact-list-item">
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="contact-list-item"
+                  >
                     {content}
                   </a>
                 ) : (
@@ -200,12 +254,15 @@ export default function Contact() {
           </ScrollReveal>
 
           <ScrollReveal delay={1} className="contact-form-wrap">
-            {status === 'sent' ? (
+            {status === "sent" ? (
               <div className="contact-success">
                 <span className="success-icon">✓</span>
                 <h3>¡Mensaje enviado!</h3>
                 <p>Gracias por escribirme, te responderé muy pronto.</p>
-                <button className="btn btn-ghost" onClick={() => setStatus('idle')}>
+                <button
+                  className="btn btn-ghost"
+                  onClick={() => setStatus("idle")}
+                >
                   Enviar otro mensaje
                 </button>
               </div>
@@ -278,26 +335,35 @@ export default function Contact() {
                   />
                 </div>
 
-                {status === 'error' && (
+                {status === "error" && (
                   <p className="form-error" role="alert">
-                    No se pudo enviar el mensaje. Inténtalo de nuevo o escríbeme por correo o
-                    WhatsApp.
+                    No se pudo enviar el mensaje. Inténtalo de nuevo o escríbeme
+                    por correo o WhatsApp.
                   </p>
                 )}
 
-                <button type="submit" className="btn btn-primary form-submit" disabled={status === 'sending'}>
-                  {status === 'sending' ? (
+                <button
+                  type="submit"
+                  className="btn btn-primary form-submit"
+                  disabled={status === "sending"}
+                >
+                  {status === "sending" ? (
                     <>
                       <span className="spinner" aria-hidden="true" />
                       Enviando...
                     </>
                   ) : (
-                    'Enviar mensaje'
+                    "Enviar mensaje"
                   )}
                 </button>
 
                 {whatsapp && (
-                  <a href={whatsapp.url} target="_blank" rel="noreferrer" className="form-whatsapp">
+                  <a
+                    href={whatsapp.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="form-whatsapp"
+                  >
                     <span>Prefieres respuestas rápidas?</span>
                     <strong>Escríbeme por WhatsApp</strong>
                   </a>
